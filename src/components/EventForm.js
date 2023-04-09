@@ -34,7 +34,7 @@ function EventForm(props) {
 						name="date"
 						onChange={(event) => props.setDate(event.target.value)}
 						value={props.date}
-						className="border rounded-md py-2 px-3"
+						className="border rounded-md py-2 px-3 w-full"
 					/>
 				</div>
 				<div className="flex flex-col space-y-2">
