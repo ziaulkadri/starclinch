@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import profileImg from '../assests/svgs/ranbir1.jpg';
-import Modal from './Modal';
+// import Modal from './Modal';
 import Avatar from './Avatar';
 import EventForm from './EventForm';
 import ImageGrid from './ImageGrid';
@@ -67,83 +67,76 @@ export default function Profile() {
 				<a href="/celebrity">Celebrity Appearance</a>
 				<a href="/ranbir-kapoor">Ranbir Kapoor</a>
 			</div>
-			<Card
-				imageSrc={profileImg}
-				title="Ranbir Kapoor"
-				type="(CELEBRITY APPEARANCE)"
-				location="Mumbai, Maharashtra"
-				description="The 'ROCKSTAR' who is a heart throb of millions, Ranbir Kapoor is one of the finest actors in Bollywood and is a true versatile performer"
-				buttonText="See price and Book"
-				modelHandler={openHandler}
-			/>
-			<Modal
-				show={showMap}
-				onCancel={(e) => closeHandler(e)}
-				header={
+			{!showMap && (
+				<Card
+					imageSrc={profileImg}
+					title="Ranbir Kapoor"
+					type="(CELEBRITY APPEARANCE)"
+					location="Mumbai, Maharashtra"
+					description="The 'ROCKSTAR' who is a heart throb of millions, Ranbir Kapoor is one of the finest actors in Bollywood and is a true versatile performer"
+					buttonText="See price and Book"
+					modelHandler={openHandler}
+				/>
+			)}
+			{showMap && (
+				<div className="border rounded-md py-2 px-3 p-3 mt-3 max-w-md mx-auto  rounded-xl shadow-lg overflow-hidden md:max-w-2xl mt-4   bg-gray-100">
 					<Avatar
 						image={profileImg}
 						alt="ranbir"
 						width={100}
 						title="Ranbir Kapoor"
 					/>
-				}
-				contentClass="place-item__modal-content"
-				footerClass="place-item__modal-actions"
-				footer={
-					<>
-						{' '}
-						<div className="flex justify-end">
-							<button
-								type="submit"
-								className="bg-grey-500 text-black py-2 px-4 rounded-md flex justify-start me-3"
-								onClick={(e) => closeHandler(e)}
-							>
-								Cancel
-							</button>
-							<button
-								type="submit"
-								className="bg-blue-500 text-white py-2 px-4 rounded-md flex justify-end"
-								onClick={handleSubmit}
-							>
-								Submit
-							</button>
-						</div>
-					</>
-				}
-			>
-				<div className="map-container">
-					<EventForm
-						closeHandler={closeHandler}
-						handleSubmit={handleSubmit}
-						handleBudgetChange={handleBudgetChange}
-						handleSwitchToggle={handleSwitchToggle}
-						showMap={showMap}
-						setShowMap={setShowMap}
-						occasion={occasion}
-						setOccasion={setOccasion}
-						date={date}
-						setDate={setDate}
-						address={address}
-						setAddress={setAddress}
-						budget={budget}
-						setBudget={setBudget}
-						attendees={attendees}
-						setAttendees={setAttendees}
-						name={name}
-						setName={setName}
-						email={email}
-						setEmail={setEmail}
-						mobile={mobile}
-						setMobile={setMobile}
-						moreOptions={moreOptions}
-						setMoreOptions={setMoreOptions}
-						details={details}
-						setDetails={setDetails}
-						sendOnWhatsapp={sendOnWhatsapp}
-						setSendOnWhatsapp={setSendOnWhatsapp}
-					/>
+
+					<div className="map-container">
+						<EventForm
+							closeHandler={closeHandler}
+							handleSubmit={handleSubmit}
+							handleBudgetChange={handleBudgetChange}
+							handleSwitchToggle={handleSwitchToggle}
+							showMap={showMap}
+							setShowMap={setShowMap}
+							occasion={occasion}
+							setOccasion={setOccasion}
+							date={date}
+							setDate={setDate}
+							address={address}
+							setAddress={setAddress}
+							budget={budget}
+							setBudget={setBudget}
+							attendees={attendees}
+							setAttendees={setAttendees}
+							name={name}
+							setName={setName}
+							email={email}
+							setEmail={setEmail}
+							mobile={mobile}
+							setMobile={setMobile}
+							moreOptions={moreOptions}
+							setMoreOptions={setMoreOptions}
+							details={details}
+							setDetails={setDetails}
+							sendOnWhatsapp={sendOnWhatsapp}
+							setSendOnWhatsapp={setSendOnWhatsapp}
+						/>
+					</div>
+					<div className="flex justify-end">
+						<button
+							type="submit"
+							className="bg-grey-500 text-black py-2 px-4 rounded-md flex justify-start me-3"
+							onClick={(e) => closeHandler(e)}
+						>
+							Cancel
+						</button>
+						<button
+							type="submit"
+							className="bg-blue-500 text-white py-2 px-4 rounded-md flex justify-end"
+							onClick={handleSubmit}
+						>
+							Submit
+						</button>
+					</div>
 				</div>
-			</Modal>
+			)}
 			<ImageGrid />
 		</main>
 	);
