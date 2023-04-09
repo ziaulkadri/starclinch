@@ -34,6 +34,7 @@ function EventForm(props) {
 						name="date"
 						onChange={(event) => props.setDate(event.target.value)}
 						value={props.date}
+						placeholder="select date"
 						className="border rounded-md py-2 px-3 w-full"
 					/>
 				</div>
